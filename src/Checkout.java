@@ -11,11 +11,11 @@ public class Checkout {
 
         // loop
         do {
-
+            itemCost = safeinput.getRangedDouble(in, "Enter your item cost between 50 cents and $9.99.", .5, 9.99);
 
             doneOrNot = safeinput.getYNConfirm(in, "Are you done shopping?");
 
         }while (!doneOrNot);
-        itemCost = safeinput.getRangedDouble(in, "Enter your item cost between 50 cents and $9.99.", .5, 9.99);
+
     }
 }
