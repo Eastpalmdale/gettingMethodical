@@ -128,35 +128,43 @@ public class safeinput {
         switch (userChoiceYesOrNo){
             case "y":
                 done = true;
+                break;
             case "n":
                 done = false;
+                break;
             default:
                 System.out.println("That is not a valid input, please enter y or n only.");
+                break;
         }
 
         return done;
     }
     public static String getRegExString(Scanner pipe, String prompt, String regEx) {
-        String userInput = "";
-        String regExpression = "\\d{3}-\\d{2}-\\d{4}";
-        System.out.println(prompt);
+        String userInput;
         boolean done = false;
+        // loop start
         do {
 
-            if (userInput.matches(regExpression)){
+            System.out.println(prompt);
+
+            userInput = pipe.nextLine();
+
+            if (userInput.matches(regEx)) {
+
                 done = true;
+
+                // loop exit after user input matches up with proper regex pattern
+
             }
-            else {
-                done = false;
+            else
+            {
                 System.out.println("That does not match the regEx pattern, please try again.");
             }
-
-
         } while (!done);
-
 
         return userInput;
     }
+
 
 
 
