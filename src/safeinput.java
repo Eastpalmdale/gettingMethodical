@@ -1,26 +1,25 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class safeinput {
 
 
     /**
-     *
-     * @param pipe a Scanner opened to read from System.in
+     * @param pipe   a Scanner opened to read from System.in
      * @param prompt prompt for the user
      * @return a String response that is not zero length
      */
-    public static String getNonZeroLenString(Scanner pipe, String prompt)
-    {
+    public static String getNonZeroLenString(Scanner pipe, String prompt) {
         String retString = "";  // Set this to zero length. Loop runs until it isn’t
-        do
-        {
-            System.out.print("\n" +prompt + ": "); // show prompt add space
+        do {
+            System.out.print("\n" + prompt + ": "); // show prompt add space
             retString = pipe.nextLine();
-        }while (retString.length() == 0); // loop exit
+        } while (retString.length() == 0); // loop exit
 
         return retString;
 
     }
+
     public static int getInt(Scanner pipe, String prompt) {
         int userInt = 0;
         String trash = "";
@@ -28,21 +27,21 @@ public class safeinput {
         // loop
         do {
             System.out.println("What is your favorite integer?");
-            if (pipe.hasNextInt()){
+            if (pipe.hasNextInt()) {
                 userInt = pipe.nextInt();
                 // loop exit
                 done = true;
-            }
-            else {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("Enter numbers only please.");
             }
 
 
-        }while (!done);
+        } while (!done);
         // return
         return userInt;
     }
+
     public static double getDouble(Scanner pipe, String prompt) {
         double userDouble = 0;
         String trash = "";
@@ -50,21 +49,21 @@ public class safeinput {
         // loop
         do {
             System.out.println("What is your favorite double?");
-            if (pipe.hasNextDouble()){
+            if (pipe.hasNextDouble()) {
                 userDouble = pipe.nextDouble();
                 // loop exit
                 done = true;
-            }
-            else {
+            } else {
                 trash = pipe.nextLine();
                 System.out.println("Enter numbers only please.");
             }
 
 
-        }while (!done);
+        } while (!done);
         // return
         return userDouble;
     }
+
     public static int getRangedInt(Scanner pipe, String prompt, int low, int high) {
         int userInput = 0;
         String trash = "";
@@ -90,6 +89,7 @@ public class safeinput {
         } while (!done);
         return userInput;
     }
+
     public static double getRangedDouble(Scanner pipe, String prompt, double low, double high) {
         double userInput = 0;
         String trash = "";
@@ -115,7 +115,8 @@ public class safeinput {
         } while (!done);
         return userInput;
     }
-    public static boolean getYNConfirm(Scanner pipe, String prompt){
+
+    public static boolean getYNConfirm(Scanner pipe, String prompt) {
         boolean done = false;
         String userChoiceYesOrNo;
 
@@ -125,7 +126,7 @@ public class safeinput {
 
         userChoiceYesOrNo = userChoiceYesOrNo.toLowerCase();
 
-        switch (userChoiceYesOrNo){
+        switch (userChoiceYesOrNo) {
             case "y":
                 done = true;
                 break;
@@ -139,6 +140,7 @@ public class safeinput {
 
         return done;
     }
+
     public static String getRegExString(Scanner pipe, String prompt, String regEx) {
         String userInput;
         boolean done = false;
@@ -155,9 +157,7 @@ public class safeinput {
 
                 // loop exit after user input matches up with proper regex pattern
 
-            }
-            else
-            {
+            } else {
                 System.out.println("That does not match the regEx pattern, please try again.");
             }
         } while (!done);
@@ -166,29 +166,26 @@ public class safeinput {
     }
 
 
-
-
-    public static int twoNumbers(int a, int b){
+    public static int twoNumbers(int a, int b) {
 
         int c = 0;
 
-        c = a+b;
+        c = a + b;
 
         return c;
     }
 
-    public static void prettyHeader(String msg){
+    public static void prettyHeader(String msg) {
 
-        int totalSpaces = 60 - 6 -msg.length();
+        int totalSpaces = 60 - 6 - msg.length();
         int leftSpace;
         int rightSpace;
 
-        if (totalSpaces % 2 ==0){
+        if (totalSpaces % 2 == 0) {
 
             leftSpace = rightSpace = totalSpaces / 2;
 
-        }
-        else {
+        } else {
 
             rightSpace = totalSpaces / 2;
             leftSpace = rightSpace + 1;
@@ -196,31 +193,50 @@ public class safeinput {
         }
 
         //print top border
-        for (int i = 0; i <= 60; i++ ){
+        for (int i = 0; i <= 60; i++) {
             System.out.print("*");
         }
         System.out.println();
         // first 3 *
         System.out.print("***");
-        for(int i = 0; i <=leftSpace; i++) {
+        for (int i = 0; i <= leftSpace; i++) {
 
             System.out.print(" ");
         }
         // printing message
         System.out.print(msg);
         //print right side
-        for(int i = 0; i <=rightSpace; i++) {
+        for (int i = 0; i <= rightSpace; i++) {
 
             System.out.print(" ");
         }
         System.out.print("***");
         System.out.println();
         //bottom border
-        for (int i = 0; i <= 60; i++ ){
+        for (int i = 0; i <= 60; i++) {
             System.out.print("*");
         }
 
 
         return;
     }
+    public static int rollDie(){
+
+        int die1;
+        int die2;
+
+        Random rnd = new Random();
+
+        die1 = rnd.nextInt(6)+1;
+        die2 = rnd.nextInt(6)+1;
+
+        int dieRoll = die1+die2;
+
+
+
+        return dieRoll;
+    }
+
+
+
 }
